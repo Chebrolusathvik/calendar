@@ -1,0 +1,35 @@
+#include<stdio.h>
+int get_1st_weekend(int year){
+int day;
+day = (((year - 1) * 365) + ((year - 1) / 4) - ((year - 1) / 100) + ((year) / 400) + 1) % 7;
+return day;
+}
+int main(){
+int year,day,numberofdays,weekend,startingday;
+char month;
+printf("Enter the year you want: ");
+scanf("%d",&year);
+ char
+*months[]={"January","February","March","April","May","June","july","August","September","october","November","December"};
+ int daysinmonth[]={31,28,31,30,31,30,31,31,30,31,30,31};
+
+ if((year%4==0&&year%100!=0)||year%400==0)
+ daysinmonth[1]=29;
+ startingday=get_1st_weekend(year);
+ for(month=0;month<12;month++){
+ printf("\n\n-------------%s-----------------",months[month]);
+ printf("\n\n Sun Mon Tue Wed Thurs Fri Sat\n\n");
+ for(weekend=0;weekend<startingday;weekend++){
+ printf(" ");
+}
+ for(day=1;day<=numberofdays;day++){
+ numberofdays=daysinmonth[month];
+printf("%5d",day);
+ if(++weekend>6){
+printf("\n");
+weekend=0;
+}
+startingday=weekend;
+}
+}
+}
